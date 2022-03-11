@@ -17,15 +17,15 @@ const clone = async (coverageBranch, repository) => {
     } else {
         console.log(`Coverage branch does not exist. Creating it.`);
         await execute(`git checkout --orphan ${coverageBranch}`, { cwd: cloneInto });
-        await execute(`rm -rf .`, { cwd: cloneInto });
+        await execute(`sudo rm -rf .`, { cwd: cloneInto });
     }
 
     return cloneInto;
 };
 
 const push = async (cwd, repo) => {
-    await execute('git config --local user.email zozor@openclassrooms.com', { cwd });
-    await execute('git config --local user.name Zozor', { cwd });
+    await execute('git config --local user.email ketankumar.limbachiya@lhind.dlh.de', { cwd });
+    await execute('git config --local user.name Ketankumar', { cwd });
     await execute('git add .', { cwd });
     await execute('git commit -m "Update coverage info" --allow-empty', { cwd });
     await execute(`git push ${repo} HEAD`, { cwd });
