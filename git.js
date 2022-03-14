@@ -15,6 +15,7 @@ const clone = async (coverageBranch, repository) => {
         console.log(`Coverage branch exists. Checking it out.`);
         await execute(`git checkout ${coverageBranch}`, { cwd: cloneInto });
         console.log(`git checkout ${coverageBranch}`);
+        await execute(`git branch`, { cwd: cloneInto });
         await execute(`git pull`, { cwd: cloneInto });
         console.log(`git pull completed`);
     } else {
