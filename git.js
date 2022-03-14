@@ -3,7 +3,7 @@ const { execute } = require('./core');
 const clone = async (coverageBranch, repository) => {
     const cloneInto = `repo-${new Date().getTime()}`;
 
-    console.log(`Cloning repository in ${cloneInto}`);
+    console.log(`Cloning repository ${repository} in ${cloneInto}`);
     await execute(`git clone ${repository} ${cloneInto}`);
 
     console.log(`Retrieving existing branches`);

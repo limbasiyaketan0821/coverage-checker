@@ -39,6 +39,7 @@ const check = async (coverages, coverageBranch, coverageFiles, reportMessageHead
 
 const update = async (coverages, coverageBranch, repository, historyFilename, coverageFiles) => {
     console.log('Updating base coverage...');
+    console.log('working Directory:'+ repository.toString());
     const workingDir = await clone(coverageBranch, repository);
     console.log('working Directory:'+ workingDir);
     const history = await retrieveHistory(coverageBranch, historyFilename);

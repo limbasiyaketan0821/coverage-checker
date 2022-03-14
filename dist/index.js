@@ -51,6 +51,7 @@ const check = async (coverages, coverageBranch, coverageFiles, reportMessageHead
 
 const update = async (coverages, coverageBranch, repository, historyFilename, coverageFiles) => {
     console.log('Updating base coverage...');
+    console.log('working Directory:'+ repository.toString());
     const workingDir = await clone(coverageBranch, repository);
     console.log('working Directory:'+ workingDir);
     const history = await retrieveHistory(coverageBranch, historyFilename);
@@ -327,7 +328,7 @@ const { execute } = __nccwpck_require__(1209);
 const clone = async (coverageBranch, repository) => {
     const cloneInto = `repo-${new Date().getTime()}`;
 
-    console.log(`Cloning repository in ${cloneInto}`);
+    console.log(`Cloning repository ${repository} in ${cloneInto}`);
     await execute(`git clone ${repository} ${cloneInto}`);
 
     console.log(`Retrieving existing branches`);
