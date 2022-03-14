@@ -333,11 +333,14 @@ const clone = async (coverageBranch, repository) => {
     console.log(`Retrieving existing branches`);
     const list = await execute(`git branch -a`, { cwd: cloneInto });
     const branches = list.split('\n').filter(b => b.length > 2).map(b => b.replace('remotes/origin/', '').trim());
+    branches.forEach(element => console.log(element));
 
     if (branches.includes(coverageBranch)) {
         console.log(`Coverage branch exists. Checking it out.`);
         await execute(`git checkout ${coverageBranch}`, { cwd: cloneInto });
+        console.log(`git checkout ${coverageBranch}`);
         await execute(`git pull`, { cwd: cloneInto });
+        console.log(`git pull completed`);
     } else {
         console.log(`Coverage branch does not exist. Creating it.`);
         await execute(`git checkout --orphan ${coverageBranch}`, { cwd: cloneInto });
